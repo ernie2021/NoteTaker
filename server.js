@@ -3,6 +3,8 @@
 
 const express = require('express');
 
+const fs = require('fs')
+
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
 
@@ -10,7 +12,7 @@ const express = require('express');
 const app = express();
 
 // Sets an initial port. We"ll use this later in our listener
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3002;
 
 //const PORT = 8080;// //without Heroku server
 
@@ -21,9 +23,6 @@ app.use(express.json());
 // ROUTER
 // The below points our server to a series of "route" files.
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
-
-require('./routes/apiRoutes')(app);
-require('./routes/htmlRoutes')(app);
 
 // LISTENER
 // The below code effectively "starts" our server
