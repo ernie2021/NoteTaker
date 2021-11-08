@@ -3,7 +3,12 @@
 
 const express = require('express');
 
+const path = require("path");
+
+const db = require("./db/db.json")
+
 const fs = require('fs')
+
 
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -20,6 +25,9 @@ const PORT = process.env.PORT || 3002;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname,"public", 'notes.html')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname,"public", 'index.html')));
+
 // ROUTER
 // The below points our server to a series of "route" files.
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
@@ -28,5 +36,5 @@ app.use(express.json());
 // The below code effectively "starts" our server
 
 app.listen(PORT, () => {
-  console.log(`App listening on PORT: ${PORT}`);
+  console.log(`App listening on PORT: http://localhost:${PORT}`);
 });
